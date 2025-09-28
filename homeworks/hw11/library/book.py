@@ -41,7 +41,8 @@ class Book:
 
     def return_book(self, reader):
         if not self.is_borrowed or self.borrowed_by != reader:
-            print(f"{reader.name} не может вернуть книгу '{self.book_name}', так как она не была выдана ему.")
+            print(f"{reader.name} не может вернуть книгу '{self.book_name}', "
+                  f"так как она не была выдана ему.")
             return False
         self.is_borrowed = False
         self.borrowed_by = None
