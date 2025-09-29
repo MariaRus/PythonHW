@@ -24,8 +24,7 @@ class Bank:
 
     def open_deposit_account(self, client_id, start_balance, years):
         if client_id in self.clients:
-            deposit = Deposit(start_balance, years)
-            self.deposits[client_id] = deposit
+            self.deposits[client_id] = Deposit(start_balance, years)
             return True
         return False
 
