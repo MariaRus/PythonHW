@@ -1,3 +1,6 @@
+from homeworks.hw11.bank_deposit.currency import CurrencyConverter
+
+
 class Deposit:
     def __init__(self, start_balance, years):
         self.start_balance = start_balance
@@ -6,7 +9,6 @@ class Deposit:
         self.months = years * 12
 
     def calculate_final_amount(self):
-        # Формула для расчета с капитализацией процентов
         final_amount = self.start_balance * ((1 + self.interest_rate / 12) ** self.months)
         return round(final_amount, 2)
 
@@ -15,6 +17,7 @@ class Bank:
     def __init__(self):
         self.clients = {}
         self.deposits = {}
+        self.currency_converter = CurrencyConverter()
 
     def register_client(self, client_id, name):
         if client_id not in self.clients:
@@ -39,3 +42,6 @@ class Bank:
             del self.deposits[client_id]
             return final_amount
         return False
+
+    def exchange_currency(self, from_curr, amount, to_curr='BYN'):
+        return self.currency_converter.convert(from_curr, amount, to_curr)
